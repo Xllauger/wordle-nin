@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showResult() {
     const finalResultEl = document.getElementById("final-score");
-    finalResultEl.textContent = "Wordle 1 - You win!";
+    finalResultEl.textContent = "Wordle-Nin - Molt bé, l'has encertada!";
 
     const totalWins = window.localStorage.getItem("totalWins") || 0;
     window.localStorage.setItem("totalWins", Number(totalWins) + 1);
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLosingResult() {
     const finalResultEl = document.getElementById("final-score");
-    finalResultEl.textContent = `Wordle 1 - Unsuccessful Today!`;
+    finalResultEl.textContent = `Wordle-Nin - No l'has encertada!`;
 
     window.localStorage.setItem("currentStreak", 0);
   }
