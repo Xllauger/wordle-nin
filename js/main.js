@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLocalStorage();
   initHelpModal();
   initStatsModal();
+  initReload();
   createSquares();
   addKeyboardClicks();
   loadLocalStorage();
@@ -136,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLosingResult() {
     const finalResultEl = document.getElementById("final-score");
-    finalResultEl.textContent = `No l'has encertada!`;
+    finalResultEl.textContent = "No l'has encertada! : " + currentWord.toUpperCase() + "";
 
     window.localStorage.setItem("currentStreak", 0);
   }
@@ -144,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function clearBoard() {
     for (let i = 0; i < 30; i++) {
       let square = document.getElementById(i + 1);
-      square.textContent = "";
+      //square.textContent = "";
     }
 
     const keys = document.getElementsByClassName("keyboard-button");
@@ -268,7 +269,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (guessedWord === currentWord) {
         setTimeout(() => {
-          const okSelected = window.confirm("Molt bé! : " + currentWord);
+          //const okSelected = window.confirm("Molt bé! : " + currentWord);
+          okSelected = true;
           if (okSelected) {
             clearBoard();
             showResult();
@@ -282,9 +284,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (guessedWords.length === 6 && guessedWord !== currentWord) {
         setTimeout(() => {
-          const okSelected = window.confirm(
-            `Ho sento, has arribat al final! La paraula és : "${currentWord.toUpperCase()}".`
-          );
+          //const okSelected = window.confirm(
+          //  `Ho sento, has arribat al final! La paraula és : "${currentWord.toUpperCase()}".`
+          //);
+          okSelected = true;
           if (okSelected) {
             clearBoard();
             showLosingResult();
@@ -367,6 +370,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function initReload() {
+    // Get the button that opens the modal
+    const btn = document.getElementById("reload");
+    // When the user clicks on the button, reload page
+    btn.addEventListener("click", function () {
+      window.location.reload(true);
+    });
+  }
+
   function updateStatsModal() {
     const currentStreak = window.localStorage.getItem("currentStreak");
     const totalWins = window.localStorage.getItem("totalWins");
@@ -377,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("current-streak").textContent = currentStreak;
 
     const winPct = Math.round((totalWins / totalGames) * 100) || 0;
-    document.getElementById("win-pct").textContent = winPct;
+    document.getElementById("win-pct").textContent = winPct + " %";
   }
 
   function initStatsModal() {
