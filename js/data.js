@@ -1,1 +1,1 @@
-const words = ["arbre", "ocell", "pedra", "porta", "conte", "sorra", "lluna", "magia", "aigua", "somni"];
+const words = ["arbre", "ocell", "pedra", "porta", "conte", "sorra", "lluna", "magia", "aigua", "terra"];

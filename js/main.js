@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showResult() {
     const finalResultEl = document.getElementById("final-score");
-    finalResultEl.textContent = "Wordle-Nin - Molt bé, l'has encertada!";
+    finalResultEl.textContent = "Molt bé, l'has encertada!";
 
     const totalWins = window.localStorage.getItem("totalWins") || 0;
     window.localStorage.setItem("totalWins", Number(totalWins) + 1);
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLosingResult() {
     const finalResultEl = document.getElementById("final-score");
-    finalResultEl.textContent = `Wordle-Nin - No l'has encertada!`;
+    finalResultEl.textContent = `No l'has encertada!`;
 
     window.localStorage.setItem("currentStreak", 0);
   }
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (guessedWord === currentWord) {
         setTimeout(() => {
-          const okSelected = window.confirm("Well done!");
+          const okSelected = window.confirm("Molt bé! : " + currentWord);
           if (okSelected) {
             clearBoard();
             showResult();
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (guessedWords.length === 6 && guessedWord !== currentWord) {
         setTimeout(() => {
           const okSelected = window.confirm(
-            `Sorry, you have no more guesses! The word is "${currentWord.toUpperCase()}".`
+            `Ho sento, has arribat al final! La paraula és : "${currentWord.toUpperCase()}".`
           );
           if (okSelected) {
             clearBoard();
@@ -298,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       guessedWords.push([]);
     } catch (_error) {
-      window.alert("Word is not recognised!");
+      window.alert("Paraula desconeguda!");
     }
   }
 
